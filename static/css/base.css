@@ -2,13 +2,15 @@ body {
     background-color: bisque;
 }
 
-.site-logo {
-    margin-left: 2vh;
-}
-
-.site-logo a {
+.edit-anchor {
     text-decoration: none;
     color: #111;
+    display: block;
+    text-align: center;
+}
+
+.site-logo {
+    margin-left: 2vh;
 }
 
 #navbar {
@@ -25,12 +27,9 @@ ul {
 }
 
 li a {
-    text-decoration: none;
     padding: 14px 16px;
-    display: block;
-    text-align: center;
-    color: #111;
     font-size: 3vh;
+    border-radius: 10px;
 }
 
 li a:hover {
@@ -38,7 +37,30 @@ li a:hover {
     background-color: #4f7a72;
 }
 
-.content {
+.content-row {
     margin: 20px;
     display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.content-col {
+    width: 50%;
+    margin: 20px;
+}
+
+.btn {
+    margin: 2vh;
+    border: none;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 2.5vh;
+    background-color: #e09f3e;
+}
+
+form {
+    padding: 10px;
+
 }
