@@ -1,3 +1,44 @@
 body {
-    background-color: red;
+    background-color: bisque;
+}
+
+.site-logo {
+    margin-left: 2vh;
+}
+
+.site-logo a {
+    text-decoration: none;
+    color: #111;
+}
+
+#navbar {
+    background-color: #71816d;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    margin-right: 2vh;
+}
+
+li a {
+    text-decoration: none;
+    padding: 14px 16px;
+    display: block;
+    text-align: center;
+    color: #111;
+    font-size: 3vh;
+}
+
+li a:hover {
+    text-decoration: underline;
+    background-color: #4f7a72;
+}
+
+.content {
+    margin: 20px;
+    display: flex;
 }
