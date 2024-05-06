@@ -1,6 +1,17 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
+
+def candidate_list(request):
+    template_name = 'voting/candidate_list.html'
+
+    csit_candidates = Candidate.objects.filter(desired_position='Head of Department, BSc.CSIT, Kathmandu BernHardt College')
+    print(request.user)
+
+    context = {'csit_candidates': csit_candidates}
+    return render(request, template_name, context)
+
 def home(request):
     template_name = 'voting/home.html'
     context = {}
@@ -13,11 +24,6 @@ def results(request):
 
 def login(request):
     template_name = 'voting/login.html'
-    context = {}
-    return render(request, template_name, context)
-
-def candidate_list(request):
-    template_name = 'voting/candidate_list.html'
     context = {}
     return render(request, template_name, context)
 

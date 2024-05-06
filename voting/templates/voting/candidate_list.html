@@ -3,27 +3,26 @@
 
 {% block content %}
 <div class="flex flex-col items-center justify-center mt-24">
-    <h1 class="text-2xl font-bold font-mono text-red-400">List of Candidates</h1>
+    <h1 class="text-2xl font-bold font-mono text-red-400">List of Candidates<br>&emsp;for HoD of CSIT</h1>
     <div class="md:flex md:justify-center md:space-x-8 md:px-14">
 
+        {% for candidate in csit_candidates %}
         <div
             class="mt-8 py-4 px-4 bg-whit w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition duration-500 mx-auto md:mx-0">
             <div class="w-sm">
                 <img class="w-64"
                     src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/a17abde8d83650a582a28432/users-with-speech-bubbles-vector_53876-82250.jpg"
                     alt="" />
-                <div class="mt-4 text-green-600 text-center">
-                    <h1 class="text-xl font-bold">Communications</h1>
-                    <p class="mt-4 text-gray-600">Pretium lectus quam id leo in vitae turpis. Mattis pellentesque id
-                        nibh
-                        tortor id.</p>
+                <div class="mt-4 text-blue-400 text-center">
+                    <h1 class="text-xl font-bold">{{candidate.name}}</h1>
+                    <p class="mt-4 text-gray-600">{{candidate.current_position}}</p>
                     <button
-                        class="mt-8 mb-4 py-2 px-14 rounded-full bg-green-600 text-white tracking-widest hover:bg-green-500 transition duration-200">VOTE</button>
+                        class="mt-8 mb-4 py-2 px-14 rounded-full bg-blue-600 text-white tracking-widest hover:bg-green-500 transition duration-200">VOTE</button>
                 </div>
             </div>
         </div>
-
-        <div
+        {% endfor %}
+        <!-- <div
             class="mt-8 py-4 px-4 bg-whit w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition duration-500 mx-auto md:mx-0">
             <div class="w-sm">
                 <img class="w-64"
@@ -54,7 +53,7 @@
                         class="mt-8 mb-4 py-2 px-14 rounded-full bg-green-600 text-white tracking-widest hover:bg-green-500 transition duration-200">VOTE</button>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 
