@@ -25,3 +25,8 @@ def candidate_detail(request):
     template_name = 'voting/candidate_detail.html'
     context = {}
     return render(request, template_name, context)
+
+def guidelines(request):
+    template_name = 'voting/guidelines.html'
+    context = {}
+    return render(request, template_name, context)

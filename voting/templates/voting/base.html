@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     <title>E-Vote</title>
 </head>
+
 <body>
     <!-- component -->
     <!-- AlpineJS -->
@@ -16,7 +18,7 @@
     <!-- Slider Component Container -->
     <div class="flex flex-col items-center justify-center">
         <div class="flex flex-col">
-           <!-- Navbar -->
+            <!-- Navbar -->
             <nav class="flex justify-around py-4 bg-white
                 backdrop-blur-md shadow-md w-full
                 fixed top-0 left-0 right-0 z-10">
@@ -24,45 +26,34 @@
                 <!-- Logo Container -->
                 <div class="flex items-center">
                     <!-- Logo -->
-                    <a class="cursor-pointer">
+                    <a href="{% url 'login' %}" class="cursor-pointer">
                         <h3 class="text-2xl font-medium text-blue-500">
-                            <img class="h-10 object-cover"
-                                src="https://evote.co.in/img/evote-logo.png" alt="Logo">
+                            <img class="h-10 object-cover" src="https://evote.co.in/img/evote-logo.png" alt="Logo">
                         </h3>
                     </a>
                 </div>
 
                 <!-- Links Section -->
                 <div class="items-center hidden space-x-8 lg:flex">
-                    <a class="flex text-gray-600 hover:text-blue-500
+                    <a href="{% url 'login' %}" class="flex text-gray-600 font-mono hover:text-blue-500
                         cursor-pointer transition-colors duration-300">
                         Home
                     </a>
 
-                    <a class="flex text-gray-600 
+                    <a href="{% url 'login' %}" class="flex text-gray-600 font-mono
                         cursor-pointer transition-colors duration-300
                         hover:text-blue-600">
-                        Themes
+                        Guidelines
                     </a>
 
-                    <a class="flex text-gray-600 hover:text-blue-500
+                    <a href="{% url 'candidate_list' %}" class="flex text-gray-600 hover:text-blue-500 font-mono
                         cursor-pointer transition-colors duration-300">
-                        Developers
+                        Candidates
                     </a>
 
-                    <a class="flex text-gray-600 hover:text-blue-500
+                    <a href="{% url 'results' %}" class="flex text-gray-600 hover:text-blue-500 font-mono
                         cursor-pointer transition-colors duration-300">
-                        Pricing
-                    </a>
-
-                    <a class="flex text-gray-600 hover:text-blue-500
-                        cursor-pointer transition-colors duration-300">
-                        Blog
-                    </a>
-
-                    <a class="flex text-gray-600 hover:text-blue-500
-                        cursor-pointer transition-colors duration-300">
-                        About Us
+                        Results
                     </a>
                 </div>
 
@@ -105,7 +96,8 @@
     {% block content %}
 
     {% endblock %}
-    
+
 
 </body>
+
 </html>
