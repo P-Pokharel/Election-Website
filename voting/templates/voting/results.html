@@ -6,41 +6,21 @@
     <h1 class="text-3xl font-bold font-mono text-red-400">Vote Count</h1>
     <div class="md:flex md:justify-center md:space-x-8 md:px-14">
 
+        {% for candidate in csit_candidates %}
         <div
-            class="mt-8 py-4 px-4 bg-white h-80 w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition duration-500 mx-auto md:mx-0">
+            class="mt-8 py-4 px-4 bg-white h-90 w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition duration-500 mx-auto md:mx-0">
             <div class="w-sm">
                 <img class="w-64"
                     src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/a17abde8d83650a582a28432/users-with-speech-bubbles-vector_53876-82250.jpg"
                     alt="" />
-                <div class="mt-4 my-2 text-blue-400 text-center">
-                    <h1 class="text-xl font-bold">Communications</h1>
+                <div class="mt-4 my-2 text-center">
+                    <h1 class="text-xl text-blue-400 font-bold">{{candidate.name}}</h1><br>
+                    <h1 class="text-xl text-green-400 font-bold">{{candidate.vote_count}}</h1>
                 </div>
             </div>
         </div>
+        {% endfor %}
 
-        <div
-            class="mt-8 py-4 px-4 bg-white h-80 h-80 w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition duration-500 mx-auto md:mx-0">
-            <div class="w-sm">
-                <img class="w-64"
-                    src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/3b242447f922540fbe750cab/fdf.jpg"
-                    alt="" />
-                <div class="mt-4 text-blue-400 text-center">
-                    <h1 class="text-xl font-bold">Inspired Design</h1>
-                </div>
-            </div>
-        </div>
-
-        <div
-            class="mt-8 py-4 px-4 bg-white h-80 w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition duration-500 mx-auto md:mx-0">
-            <div class="w-sm">
-                <img class="w-64"
-                    src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/8cc47b39e719570b996d9879/dsds.jpg"
-                    alt="" />
-                <div class="mt-4 text-blue-400 text-center">
-                    <h1 class="text-xl font-bold">Happy Customers</h1>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 {% endblock %}
