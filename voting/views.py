@@ -18,7 +18,7 @@ def results(request):
     csit_candidates = Candidate.objects.all()
 
     context = {'csit_candidates': csit_candidates}
-    
+
     return render(request, template_name, context)
 
 def candidate_detail(request):
@@ -28,9 +28,14 @@ def candidate_detail(request):
     return render(request, template_name, context)
 
 def home(request):
-    template_name = 'voting/home.html'
     context = {}
-    return render(request, template_name, context)
+
+    if request.user.is_authenticated:
+        template_name = 'voting/candidate_list.html'
+        return render(request, template_name, context)
+    else:
+        template_name = 'voting/login.html'
+        return render(request, template_name, context)
 
 def login(request):
     template_name = 'voting/login.html'
