@@ -42,7 +42,13 @@ def login(request):
     context = {}
     return render(request, template_name, context)
 
+def registration(request):
+    template_name = 'voting/registration.html'
+    context = {}
+    return render(request, template_name, context)
+
 def guidelines(request):
     template_name = 'voting/guidelines.html'
     context = {}
     return render(request, template_name, context)
+
