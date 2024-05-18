@@ -2,32 +2,68 @@
 {% load static %}
 
 {% block content %}
+
 <div class="container mx-auto py-8">
     <h1 class="text-3xl font-bold font-mono text-red-400 mt-14 mb-5 text-center">Registration Form</h1>
-    <form class="w-full border border-gray-300 max-w-sm mx-auto bg-white p-8 rounded-md shadow-md">
+    <form method="POST" action=""
+        class="w-full border border-gray-300 max-w-sm mx-auto bg-white p-8 rounded-md shadow-md">
+        {% csrf_token %}
         <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
-            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                type="text" id="name" name="name" placeholder="John Doe">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">First Name</label>
+            {{form.first_name}}
+            <!-- <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                type="text" id="name" name="name" placeholder="John Doe"> -->
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Last Name</label>
+            {{form.last_name}}
+            <!-- <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                type="text" id="name" name="name" placeholder="John Doe"> -->
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Username</label>
+            {{form.username}}
+            <!-- <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                type="text" id="name" name="name" placeholder="John Doe"> -->
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
-            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                type="email" id="email" name="email" placeholder="john@example.com">
+            {{form.email}}
+            <!-- <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                type="email" id="email" name="email" placeholder="john@example.com"> -->
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
-            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                type="password" id="password" name="password" placeholder="********">
+            {{form.password1}}
+            <!-- <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                type="password" id="password" name="password" placeholder="********"> -->
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">Confirm Password</label>
-            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                type="password" id="confirm-password" name="confirm-password" placeholder="********">
+            {{form.password2}}
+            <!-- <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                type="password" id="confirm-password" name="confirm-password" placeholder="********"> -->
         </div>
-        <button
+        <input
             class="w-full bg-indigo-500 text-white text-sm font-bold py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300"
-            type="submit">Register</button>
+            type="submit" value="Register">
     </form>
 </div>
+
+
+
+<!-- <div class="container mx-8 my-36">
+    <form method="POST" action="">{% csrf_token %}
+
+        {{form.username.label}} {{form.username}}
+        {{form.first_name.label}} {{form.first_name}}
+        {{form.last_name.label}} {{form.last_name}}
+        {{form.email.label}} {{form.email}}
+        {{form.password1.label}} {{form.password1}}
+        {{form.password2.label}} {{form.password2}}
+
+        <input type="submit" name="Register User">
+    </form>
+</div> -->
+
 {% endblock %}

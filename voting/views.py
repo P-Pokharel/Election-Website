@@ -1,7 +1,23 @@
 from django.shortcuts import render
 from .models import *
+from django.contrib.auth.forms import UserCreationForm
+from .forms import RegistrationForm
 
 # Create your views here.
+
+def registration(request):
+    template_name = 'voting/registration.html'
+
+    form = RegistrationForm()
+
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form = RegistrationForm()
+            
+    context = {'form': form}
+    return render(request, template_name, context)
 
 def candidate_list(request):
     template_name = 'voting/candidate_list.html'
@@ -39,11 +55,6 @@ def home(request):
 
 def login(request):
     template_name = 'voting/login.html'
-    context = {}
-    return render(request, template_name, context)
-
-def registration(request):
-    template_name = 'voting/registration.html'
     context = {}
     return render(request, template_name, context)
 
