@@ -1,12 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
 from .forms import RegistrationForm
 
 # Create your views here.
 
-def registration(request):
-    template_name = 'voting/registration.html'
+def registrationPage(request):
 
     form = RegistrationForm()
 
@@ -14,10 +14,24 @@ def registration(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            form = RegistrationForm()
+            return redirect('login')
             
     context = {'form': form}
-    return render(request, template_name, context)
+    return render(request, 'voting/registration.html', context)
+
+def loginPage(request):
+    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+           
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('candidate_list')
+
+    context = {}
+    return render(request, 'voting/login.html', context)
 
 def candidate_list(request):
     template_name = 'voting/candidate_list.html'
@@ -47,16 +61,9 @@ def home(request):
     context = {}
 
     if request.user.is_authenticated:
-        template_name = 'voting/candidate_list.html'
-        return render(request, template_name, context)
+        return redirect('candidate_list')
     else:
-        template_name = 'voting/login.html'
-        return render(request, template_name, context)
-
-def login(request):
-    template_name = 'voting/login.html'
-    context = {}
-    return render(request, template_name, context)
+        return redirect('login')
 
 def guidelines(request):
     template_name = 'voting/guidelines.html'
