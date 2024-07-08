@@ -10,7 +10,15 @@ class Candidate(models.Model):
     date_of_birth = models.DateField(blank=True)
     qualification = models.CharField(blank=True, null=True, max_length=100)
     vote_count = models.IntegerField(default=0)
+    image = models.ImageField(null=True, blank=True)
 
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
 
 class Voter(models.Model):
     GENDER_CHOICES = [

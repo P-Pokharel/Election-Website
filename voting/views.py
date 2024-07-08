@@ -1,14 +1,43 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegistrationForm
+from .algorithm import quick_sort
 
 # Create your views here.
 
-def user_info(request):
+def voter_info(request, candidate_id):
+
+    candidate = get_object_or_404(Candidate, id=candidate_id)
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        voterid = request.POST.get('voterid')
+        citizenshipno = request.POST.get('citizenshipno')
+        dob = request.POST.get('dob')
+        address = request.POST.get('address')
+        
+        try:
+            voter = Voter.objects.get(voter_id=voterid, citizenship_no=citizenshipno)
+
+            if voter.vote_casted:
+                context = {'error': "You have already casted your vote!"}
+                return render(request, 'voting/voter_info.html', context)
+            
+            candidate.vote_count += 1
+            candidate.save()
+
+            voter.vote_casted = True
+            voter.save()
+
+            return redirect('results')
+
+        except Voter.DoesNotExist:
+            context={'error': "Invalid Voter!!"}
+            return render(request, 'voting/voter_info.html', context)
+
     context={}
-    return render(request, 'voting/user_info.html', context)
+    return render(request, 'voting/voter_info.html', context)
 
 
 def registrationPage(request):
@@ -51,10 +80,10 @@ def candidate_list(request):
 def results(request):
     template_name = 'voting/results.html'
 
-    csit_candidates = Candidate.objects.all()
+    csit_candidates = list(Candidate.objects.all())
+    quick_sort(csit_candidates, 0, len(csit_candidates) - 1)
 
     context = {'csit_candidates': csit_candidates}
-
     return render(request, template_name, context)
 
 def candidate_detail(request):
