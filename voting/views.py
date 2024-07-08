@@ -6,6 +6,11 @@ from .forms import RegistrationForm
 
 # Create your views here.
 
+def user_info(request):
+    context={}
+    return render(request, 'voting/user_info.html', context)
+
+
 def registrationPage(request):
 
     form = RegistrationForm()

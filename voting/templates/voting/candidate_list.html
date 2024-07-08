@@ -16,8 +16,10 @@
                 <div class="mt-4 text-blue-400 text-center">
                     <h1 class="text-xl font-bold">{{candidate.name}}</h1>
                     <p class="mt-4 text-gray-600">{{candidate.current_position}}</p>
-                    <button
-                        class="mt-8 mb-4 py-2 px-14 rounded-full bg-blue-600 text-white tracking-widest hover:bg-green-500 transition duration-200">VOTE</button>
+                    <a href="{% url 'user_info' %}"
+                        class="inline-block mt-8 mb-4 py-2 px-14 rounded-full bg-blue-600 text-white tracking-widest hover:bg-green-500 transition duration-200 text-center">
+                        VOTE
+                    </a>
                 </div>
             </div>
         </div>

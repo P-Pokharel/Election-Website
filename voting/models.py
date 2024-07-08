@@ -22,6 +22,8 @@ class Voter(models.Model):
 
     voter_name = models.CharField(blank=False, max_length=120)
     voter_id = models.CharField(blank=False, max_length=120)
+    citizenship_no = models.CharField(blank=False, max_length=120)
     voter_address = models.CharField(blank=False, max_length=120)
     date_of_birth = models.DateField(blank=False)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=False, default='U')
+    vote_casted = models.BooleanField(default=False)
